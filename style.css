@@ -1,48 +1,11 @@
-body {
-
-    margin: 0;
-    height: 100vh;
-    background: url("nature-3082832_1280.jpg") no-repeat center center/cover;
-    font-family: Arial, sans-serif;
+/* styles.css - simple, clean */
+body { font-family: Arial, sans-serif; background:#f5f6fa; margin:0; padding:40px; }
+.container { width:420px; margin:0 auto; background:#fff; padding:20px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+h1 { margin-top:0; font-size:20px; text-align:center; }
+label { display:block; margin:10px 0; }
+input[type="text"], input[type="email"], input[type="tel"] {
+width:100%; padding:8px; box-sizing:border-box; border:1px solid #ddd; border-radius:4px;
 }
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.login-box {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    width: 300px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.login-box input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-}
-
-.login-box button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.google {
-    background: #db4437;
-}
-
-.link {
-    color: blue;
-    cursor: pointer;
-    font-size: 14px;
-}
+button { width:100%; padding:10px; background:#1976d2; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer; }
+button:hover { opacity:0.95; }
+a { font-size:13px; color:#1976d2; text-decoration:none;}

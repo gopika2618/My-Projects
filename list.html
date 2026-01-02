@@ -1,0 +1,25 @@
+<?php
+// list.php - simple admin listing
+require 'db.php';
+$rows = $pdo->query('SELECT * FROM registrations ORDER BY created_at DESC')->fetchAll();
+?>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Registrations</title></head>
+<body>
+    <h2>All Registrations</h2>
+    <table border="1" cellpadding="6" cellspacing="0">
+    <tr><th>ID</th><th>Name</th><th>Roll No</th><th>Email</th><th>Course</th><th>Phone</th><th>Time</th></tr>
+    <?php foreach($rows as $r): ?>
+    <tr>
+        <td><?=htmlspecialchars($r['id'])?></td>
+        <td><?=htmlspecialchars($r['name'])?></td>
+        <td><?=htmlspecialchars($r['roll_no'])?></td>
+        <td><?=htmlspecialchars($r['email'])?></td>
+        <td><?=htmlspecialchars($r['course'])?></td>
+        <td><?=htmlspecialchars($r['phone'])?></td>
+        <td><?=htmlspecialchars($r['created_at'])?></td>
+    </tr>
+    <?php endforeach; ?>
+    </table>
+</body>
+</html>
