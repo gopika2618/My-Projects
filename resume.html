@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gopika K — Portfolio Resume</title>
+
+  <!-- Basic reset and fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue-900: #0a4d94;
+      --blue-700: #1560d6;
+      --blue-200: #d9ecff;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --glass: rgba(255,255,255,0.85);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      color:#0b2540;
+      background: linear-gradient(180deg,var(--blue-200) 0%, #f8fbff 100%);
+      scroll-behavior: smooth;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Top navigation (sticky) */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      box-shadow: 0 4px 14px rgba(9,30,66,0.06);
+      border-bottom: 1px solid rgba(10,77,148,0.06);
+    }
+    .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:10px 18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--blue-900);
+      font-weight:700;
+      font-size:20px;
+    }
+    /* Avatar removed — replace with initials box */
+    .avatar{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--blue-700);
+      color:white;
+      font-weight:700;
+      font-size:16px;
+    }
+
+    nav{margin-left:auto}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{
+      padding:8px 12px;
+      text-decoration:none;
+      color:var(--blue-900);
+      border-radius:8px;
+      font-weight:600;
+      font-size:14px;
+    }
+    .nav-links a:hover, .nav-links a.active{
+      background:var(--blue-700);
+      color:white;
+    }
+    /* For small screens show a hamburger */
+    .menu-toggle{display:none;border:0;background:transparent;font-size:20px;color:var(--blue-900)}
+
+    /* Full-page sections */
+    .section{
+      min-height:100vh;
+      padding:56px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      gap:28px;
+      grid-template-columns: 1fr 420px;
+      align-items:start;
+    }
+
+    /* Left column - main text */
+    .main-column{
+      background:var(--glass);
+      padding:28px;
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(9,30,66,0.06);
+    }
+    .main-column h1{
+      margin:0 0 8px;
+      color:var(--blue-900);
+      font-size:28px;
+    }
+    .subtitle{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .section-block{
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px dashed rgba(10,77,148,0.06);
+    }
+
+    /* Right column - profile card (sticky within section) */
+    .side-card{
+      background:white;
+      border-radius:12px;
+      padding:20px;
+      box-shadow: 0 8px 24px rgba(9,30,66,0.06);
+      height:fit-content;
+      position:sticky;
+      top:96px;
+      align-self:start;
+    }
+
+    .center{text-align:center}
+    .muted{color:var(--muted);font-size:14px}
+    .contact-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .chip{display:flex;gap:10px;align-items:center;padding:8px;border-radius:10px;background:linear-gradient(180deg,#f6fbff,#ffffff);}
+    .chip strong{color:var(--blue-700);font-size:13px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .skill-pill{background:var(--blue-200);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--blue-900);font-weight:600}
+
+    /* Education timeline */
+    .timeline{display:flex;flex-direction:column;gap:14px}
+    .edu-item{display:flex;gap:14px;align-items:flex-start}
+    .edu-year{width:82px;color:var(--blue-700);font-weight:700}
+    .edu-desc{color:#0b2540}
+
+    /* Project card */
+    .project-card{background:white;padding:18px;border-radius:10px;box-shadow: 0 8px 30px rgba(9,30,66,0.04)}
+    .project-card h4{margin:0 0 6px;color:var(--blue-900)}
+
+    /* Footer */
+    .signature{text-align:right;color:var(--muted);font-style:italic;margin-top:14px;font-weight:600;}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .container{grid-template-columns: 1fr}
+      .side-card{position:relative;top:0}
+    }
+    @media (max-width:640px){
+      .nav-links{display:none}
+      .menu-toggle{display:inline-block}
+      .brand h2{font-size:16px}
+      .main-column h1{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="#hero">
+        <div class="avatar">GK</div>
+        <h2>Gopika K</h2>
+      </a>
+
+      <nav role="navigation" aria-label="Main">
+        <div class="nav-links" id="navLinks">
+          <a href="#hero" class="active">Home</a>
+          <a href="#education">Education</a>
+          <a href="#project">Project</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="section" aria-label="Home">
+    <div class="container">
+      <div class="main-column">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+          <div>
+            <h1>Hi, I'm Gopika K</h1>
+            <div class="subtitle">BE (CSE) student • Web Developer • Java | Python </div>
+          </div>
+
+          <div style="text-align:right">
+            <div style="background:linear-gradient(180deg,var(--blue-700),var(--blue-900)); color:white;padding:12px 18px;border-radius:10px;font-weight:700">
+              Seeking Internships• Open to opportunities
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3 style="margin:0;color:var(--blue-900)">Objective</h3>
+          <p class="muted">I seeking a Web development internship to apply programming skills, learn industry best practices, and contribute to real-world projects</p>
+        </div>
+
+        <div class="section-block">
+          <h3 style="margin:0;color:var(--blue-900)">Skills</h3>
+          <div class="skills">
+            <span class="skill-pill">Beginner-level experience with Java</span>
+            <span class="skill-pill">Basic proficciency in Python</span>
+            <span class="skill-pill">Familar with HTML & CSS</span>
+            <span class="skill-pill">Founddational knowledge of Php</span>
+            <span class="skill-pill">Basic of UI/UX</span>
+            <span class="skill-pill">Basic knowledge of C / C++</span>
+            <span class="skill-pill">Currently learning Cloud Computing</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div class="center">
+          <h3 style="margin-top:10px;margin-bottom:4px">Gopika K</h3>
+          <div class="muted">Computer Science Student</div>
+        </div>
+
+        <div class="contact-list">
+          <div class="chip"><div>📍</div><div><strong>Address</strong><div class="muted">Kannankurichi, Salem</div></div></div>
+          <div class="chip"><div>📞</div><div><strong>Phone</strong><div class="muted">+91 9042189599</div></div></div>
+          <div class="chip"><div>✉</div><div><strong>Email</strong><div class="muted">gopik7r@gmail.com</div></div></div>
+          <div class="chip"><div>🌐</div><div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/gopika-k-24aa32304" style="color:var(--blue-700);text-decoration:none">View Profile</a></div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="container" style="grid-template-columns:1fr 360px">
+      <div class="main-column">
+        <h1>Education</h1>
+        <p class="muted">Academic history and ongoing studies.</p>
+
+        <div class="section-block">
+          <div class="timeline">
+            <div class="edu-item">
+              <div class="edu-year">2024 • BE</div>
+              <div class="edu-desc"><strong>Mahendra Engineering College</strong><div class="muted">BE — CSE (Pursuing)</div></div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-year">2023 • 12th</div>
+              <div class="edu-desc"><strong>Jay Matric Hr Sec School</strong><div class="muted">Score: 463</div></div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-year">2022 • 11th</div>
+              <div class="edu-desc"><strong>Jay Matric Hr Sec School</strong><div class="muted">Score: 449</div></div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-year">2021 • 10th</div>
+              <div class="edu-desc"><strong>Jay Matric Hr Sec School</strong><div class="muted">ALL PASS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div style="font-weight:700;color:var(--blue-900)">Relevant coursework</div>
+        <div class="muted">Data Structures • DBMS • UI/UX • Embedded Systems</div>
+
+        <div style="margin-top:12px">
+          <div style="font-weight:700;color:var(--blue-900)">Tools</div>
+          <div class="skills">
+            <div class="skill-pill">VS Code</div>
+            <div class="skill-pill">Git</div>
+            <div class="skill-pill">Github</div>
+            <div class="skill-pill">Figma</div>
+            <div class="skill-pill">Xampp</div>
+            <div class="skill-pill">AWS console</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project" class="section">
+  <div class="container" style="grid-template-columns: 1fr 360px">
+    <div class="main-column">
+      <h1>Project</h1>
+      <p class="muted">Selected project highlights</p>
+
+      <div class="section-block">
+        <div class="project-card">
+          <h4>Cab Booking WebPage</h4>
+          <p class="muted">Role: Developer</p>
+          <ul>
+            <li>Developed a camp booking webpage using HTML and CSS for responsive and user-friendly interface design.</li>
+            <li>Implemented backend functionality in PHP and SQL to handle user registration, booking management, and form submissions.</li>
+            <li>Integrated Cloud SQL database to manage bookings, store user data securely, and ensure real-time availability updates.</li>
+          </ul>
+          <h4>Home Automation using Google Assistant</h4>
+          <p class="muted">Role: Developer</p>
+          <ul>
+            <li>Integrated Google Home with IoT devices</li>
+            <li>Used Raspberry Pi + Python backend</li>
+            <li>Implemented automation flows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side-card">
+      <div style="font-weight:700;color:var(--blue-900)">Links</div>
+      <a class="chip" href="https://www.linkedin.com/in/gopika-k-24aa32304"><div>🔗</div><strong>LinkedIn</strong></a>
+      <a class="chip" href="c:\Users\GOPIKA KR\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\9188905E74C28E489B44E954EC0B9BCA\cv_17_1764526626567.pdf"><div>📄</div><strong>Resume PDF</strong></a>
+    </aside>
+  </div>
+</section>
+
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <div class="main-column">
+        <h1>Achievements</h1>
+        <p class="muted">Price and Participation</p>
+        <div class="section-block">
+          <ul>
+            <li>web development challenge</li>
+            <li>Website host on cloud console</li>
+            <li>UI/UX challenges</li>
+            <li>IOT based projects</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div style="font-weight:700;color:var(--blue-900)">Language</div>
+        <div>English</div>
+        <div>Tamil</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container" style="grid-template-columns:1fr 360px">
+      <div class="main-column">
+        <h1>Contact</h1>
+        <p class="muted">Get in touch.</p>
+
+        <div class="section-block">
+          <form id="contactForm" style="display:flex;flex-direction:column;gap:12px">
+            <input name="name" placeholder="Your name" />
+            <input name="email" placeholder="Your email" />
+            <textarea name="message" rows="6" placeholder="Message"></textarea>
+            <div style="display:flex;gap:12px;align-items:center">
+              <button type="submit" style="background:var(--blue-700);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer">Send Message</button>
+              <div class="muted">Or email: <strong>gopik7r@gmail.com</strong></div>
+            </div>
+            <div id="formStatus" class="muted"></div>
+          </form>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div style="font-weight:700;color:var(--blue-900)">Quick Info</div>
+        <div class="muted">DOB: 26/09/2005</div>
+        <div class="muted">Nationality: India</div>
+        <div class="muted">Marital status: Single</div>
+
+        <div style="margin-top:18px">
+          <div style="font-weight:700;color:var(--blue-900)">Availability</div>
+          <div class="muted">Open to internships</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer style="text-align:center;color:var(--muted);padding:20px">
+    © <span id="year"></span> Gopika K — Portfolio
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const links = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = links.map(l => document.querySelector(l.getAttribute('href')));
+
+    function onScroll(){
+      const pos = window.scrollY + 120;
+      let current = sections[0];
+      for(let s of sections){
+        if(s.offsetTop <= pos) current = s;
+      }
+      links.forEach(l => l.classList.toggle('active', document.querySelector(l.getAttribute('href')) === current));
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', ()=>{
+      navLinks.style.display = navLinks.style.display === 'flex' ? '' : 'flex';
+      navLinks.style.flexDirection = 'column';
+    });
+  </script>
+
+</body>
+</html>
